@@ -1,10 +1,414 @@
-:root{--bg:#000000;--fg:#e5e7eb;--muted:#9aa2af;--acc:#60a5fa;--card:#111216;--border:#1f2430;--shadow:0 10px 30px rgba(0,0,0,.2)}
-*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--fg)}
-a{color:#C8C8C8;text-decoration:none}a:hover{text-decoration:none; color:#E1E5E1}
-.container{max-width:1000px;margin:0 auto;padding:24px}.nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:10px 0 24px}
-.nav .links{display:flex;gap:14px;flex-wrap:wrap}.btn{display:inline-block;padding:10px 14px;border:1px solid var(--border);border-radius:14px;background:var(--card);box-shadow:var(--shadow);line-height:1}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.card{background:#353230;border:1px solid var(--border);border-radius:18px;padding:16px;box-shadow:var(--shadow);transition:transform .12s ease}
-.card:hover{transform:translateY(-2px)}.tag{font-size:12px;padding:4px 8px;border:1px solid var(--border);border-radius:999px;color:#191919}.meta{color:var(--muted);font-size:14px}
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center}.hero img{width:100%;border-radius:18px;border:1px solid var(--border);background:#12131a}
-footer{margin:40px 0;color:var(--muted);font-size:14px}blockquote{border-left:3px solid var(--border);margin:0;padding:8px 12px;color:var(--muted)}
-@media(max-width:800px){.hero{grid-template-columns:1fr}}
+:root {
+  --bg: #120606;
+  --accent: #F5C116;   /* Linkfarbe / gelb */
+  --hover: #ffffff;    /* Hover-Farbe */
+  --text-main: #ffffff;
+  --text-sub: #d0d0d0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Reset / Basics */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  min-height: 100vh;
+  font-size: 150%;
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 70px 40px 40px;
+}
+
+/* Links */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--hover);
+}
+
+/* Typo */
+
+h1, h2, h3, h4,
+.branding,
+.section-title,
+.video-caption {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 150%;
+  line-height: 1.5;
+}
+
+
+
+/* === TYPO SKALA — EXTRA GROSS === */
+
+/* Basisgröße */
+body {
+  font-size: 1.55rem;  /* ~25px */
+  line-height: 1.55;
+}
+
+/* Hauptüberschrift */
+h1 {
+  font-size: 3.8rem;   /* ~61px */
+  line-height: 1.15;
+}
+
+/* Bereichs-Überschriften (z.B. 2D-ANIMATION) */
+h2,
+.section-title {
+  font-size: 3.2rem;   /* ~51px */
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Unterüberschriften */
+h3 {
+  font-size: 2.4rem;   /* ~38px */
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: 1.9rem;   /* ~30px */
+  line-height: 1.3;
+}
+
+/* Branding oben */
+.branding {
+  font-size: 3.2rem;   /* wie h2 */
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* Video-Beschriftungen */
+.video-caption {
+  font-size: 1.55rem;  /* wie Body */
+  line-height: 1.4;
+  color: var(--text-sub);
+}
+
+/* Intro Bereich */
+.intro-main {
+  font-size: 2.1rem;   /* ~34px */
+  font-weight: 500;
+}
+
+.subtitle {
+  font-size: 1.55rem;  /* ~25px */
+  line-height: 1.55;
+  color: var(--text-sub);
+}
+
+
+
+
+/* Header */
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.branding {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.highlight {
+  color: var(--accent);
+}
+
+.intro-main {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-sub);
+  max-width: 780px;
+  line-height: 1.4;
+}
+
+.subtitle + .subtitle {
+  margin-top: 6px;
+}
+
+/* Sections */
+
+.video-section {
+  margin-top: 50px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+
+.video-section > p.subtitle {
+  width: 95%;
+  max-width: 100%;
+  margin-bottom: 32px;
+}
+
+
+/* Video-Grid */
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.video-card {
+  border: 1px solid #333;
+  background: #180b0b;
+  padding: 10px 10px 12px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.video-card:hover {
+  border-color: var(--hover);
+  background-color: #211010;
+}
+
+.video-card-wide {
+  grid-column: 1 / -1; /* vollbreit */
+}
+
+/* Video-Container + Seitenverhältnisse */
+
+/* Basis: 16:9 */
+.video-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Hochformat 9:16 */
+.video-media.portrait {
+  aspect-ratio: 9 / 16;
+}
+
+/* Querformat explizit (optional, aber klarer) */
+.video-media.landscape {
+  aspect-ratio: 16 / 9;
+}
+
+/* Inhalt (Video / iframe) füllt den Container */
+.video-media video,
+.video-media iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #000;
+  object-fit: cover;   /* falls kein Cropping gewünscht: 'contain' nehmen */
+}
+
+/* Caption */
+
+.video-caption {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 15px;
+  color: var(--text-sub);
+}
+
+.video-card:hover .video-caption {
+  color: var(--hover);
+}
+
+/* Footer */
+
+footer {
+  margin-top: 60px;
+  font-size: 12px;
+  color: var(--text-sub);
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .wrapper {
+    padding: 40px 20px 30px;
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .video-card-wide {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* === SPEZIALBEREICH: 3 Videos gleich hoch in einer Zeile === */
+
+.video-row-equal {
+  display: flex !important;      /* überschreibt das Grid nur hier */
+  flex-wrap: nowrap;
+}
+
+/* Karten: gleiche Breite */
+.video-row-equal .video-card {
+  flex: 1 0 1;
+}
+
+/* Video-Container: gleiche Höhe */
+.video-row-equal .video-media {
+  height: 500px;                 /* Höhe anpassen nach Wunsch */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Videos behalten AR, werden nur skaliert, nicht beschnitten */
+.video-row-equal .video-media video,
+.video-row-equal .video-media iframe {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ============================= */
+/*  RESPONSIVE TYPO FÜR GROSSE SCREENS & 4K */
+/* ============================= */
+
+/* Ab ~Laptop / kleiner Desktop (>= 1200px) */
+@media (min-width: 1200px) {
+  body {
+    font-size: 1.1rem;   /* ca. 18px */
+  }
+
+  .branding,
+  h2,
+  .section-title {
+    font-size: 2.1rem;
+  }
+
+  .intro-main {
+    font-size: 1.4rem;
+  }
+
+  .subtitle,
+  .video-caption {
+    font-size: 1.1rem;
+  }
+
+  .wrapper {
+    max-width: 1440px;
+  }
+}
+
+/* Ab großem Desktop (>= 1600px) */
+@media (min-width: 1600px) {
+  body {
+    font-size: 1.3rem;   /* ca. 21px */
+  }
+
+  .branding,
+  h2,
+  .section-title {
+    font-size: 2.6rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  .intro-main {
+    font-size: 1.7rem;
+  }
+
+  .subtitle,
+  .video-caption {
+    font-size: 1.3rem;
+  }
+
+  .wrapper {
+    max-width: 1700px;
+  }
+}
+
+/* Ab 4K-Breite (>= 2200px) – hier wird’s wirklich groß und lesbar */
+@media (min-width: 2200px) {
+  body {
+    font-size: 1.6rem;   /* ca. 26px */
+  }
+
+  .branding,
+  h1 {
+    font-size: 3.4rem;   /* ca. 54px */
+  }
+
+  h2,
+  .section-title {
+    font-size: 3rem;     /* ca. 48px */
+  }
+
+  h3 {
+    font-size: 2.3rem;
+  }
+
+  .intro-main {
+    font-size: 2rem;     /* ca. 32px */
+  }
+
+  .subtitle,
+  .video-caption {
+    font-size: 1.6rem;   /* ca. 26px */
+  }
+
+  .wrapper {
+    max-width: 1900px;
+  }
+}
+
