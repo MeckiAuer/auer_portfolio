@@ -1,223 +1,189 @@
-<!DOCTYPE html>
-<html lang="de">
+/* ============================================================
+   1. BASIS-STLYES (GILT FÜR ALLES)
+   ============================================================ */
+:root {
+  --bg: #120606;
+  --accent: #F5C116;
+  --hover: #ffffff;
+  --text-main: #ffffff;
+  --text-sub: #d0d0d0;
+}
 
-<head>
-  <meta charset="UTF-8" />
-  <title>Portfolio | Mecki Auer</title>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@500;600;700&display=swap"
-    rel="stylesheet">
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
 
-  <link rel="stylesheet" href="styles.css" />
-</head>
+body {
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  overflow-x: hidden;
+}
 
-<body>
-  <div class="wrapper">
-    <header>
-      <div class="branding">
-        P<span class="highlight">O</span>RTFOLIO | MECKI AUER
-      </div>
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
 
-      <div>
-        <p class="intro-main">
-          Multimedia Design | 3D Modeling &amp; Animation | Motion Design
-        </p>
-        <p class="subtitle" style="max-width:100%; width:90%;">
-          Ich konzipiere und produziere klare, wirkungsvolle Visuals |
-          von 3D-Renderings und Animation bis zu Web &amp; Motion.
-        </p>
-        <p class="subtitle">
-          Hier finden sich ausgewählte Projekte.
-        </p>
-      </div>
-    </header>
+/* Typografie */
+h2, .section-title, .branding {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+}
 
-    <main>
-      <!-- 2D-ANIMATION -->
-      <section class="video-section">
-        <h2 class="section-title">2D-ANIMATI<span class="highlight">O</span>N</h2>
-        <p class="subtitle"><strong>Kunden: Kürbiskernöl g.g.A. & Cargo Terminal Graz Website / Agentur RNPD</strong>
-        </p>
-        <p class="subtitle">Teilaufgaben: Konzeption und Umsetzung animierter Icons und Logos in After Effects | Design
-          & Vorbereitung | Timing & Bewegungsplanung | Animation Keyframe-Animation | Export als Lottie File für Web
-        </p>
+.branding {
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
 
-        <div class="video-grid">
-          <!-- Videos 1–4 -->
-          <article class="video-card">
-            <div class="video-media portrait">
-              <video poster="poster-01.jpg" autoplay muted loop playsinline>
-                <source src="videos/KOEL_Flasche_2.mp4" type="video/mp4">
-                Dein Browser unterstützt HTML5-Video nicht.
-              </video>
-            </div>
-            <h3 class="video-caption">2D-Animation Kernöl-Flasche</h3>
-          </article>
+.highlight { color: var(--accent); }
 
-          <article class="video-card">
-            <div class="video-media portrait">
-              <video autoplay muted loop playsinline poster="poster-02.jpg">
-                <source src="videos/KOEL_3er.mp4" type="video/mp4">
-              </video>
-            </div>
-            <h3 class="video-caption">2D-Animation Icons</h3>
-          </article>
+.intro-main {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
 
-          <article class="video-card">
-            <div class="video-media portrait">
-              <video autoplay muted loop playsinline poster="poster-03.jpg">
-                <source src="videos/KOEL_Gebiete.mp4" type="video/mp4">
-              </video>
-            </div>
-            <h3 class="video-caption">2D-Animation Anbaugebiete</h3>
-          </article>
-      </section>
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-sub);
+  margin-bottom: 15px;
+  max-width: 900px;
+}
 
+.section-title {
+  font-size: 1.6rem;
+  margin: 60px 0 25px;
+  border-left: 4px solid var(--accent);
+  padding-left: 15px;
+}
 
-      <section class="video-section">
-        <div class="video-grid video-row-equal">
+/* ============================================================
+   2. DESKTOP LAYOUT (AB 601px)
+   ============================================================ */
+@media (min-width: 601px) {
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+  }
 
-          <article class="video-card">
-            <div class="video-media portrait">
-              <video autoplay muted loop playsinline src="videos/CARGO_Logo.mp4"></video>
-            </div>
-            <h3 class="video-caption">2D-Animation Logoanimation</h3>
-          </article>
+  .video-card-wide {
+    grid-column: 1 / -1;
+  }
 
+  .video-card {
+    background: #180b0b;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+  }
 
+  .video-card:hover {
+    border-color: var(--hover);
+    transform: translateY(-5px);
+  }
 
-          <article class="video-card">
-            <div class="video-media portrait">
-              <video autoplay muted loop playsinline src="videos/CARGO_Weltkarte.mp4"></video>
-            </div>
-            <h3 class="video-caption">2D-Animation Weltkarte Animation</h3>
-          </article>
+  .video-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
 
-        </div>
-      </section>
+  .video-media.portrait {
+    aspect-ratio: 9 / 16;
+    max-height: 600px; /* Verhindert zu riesige Porträt-Videos am Desktop */
+    margin: 0 auto;
+  }
 
+  .video-media video, .video-media iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
+  .video-media.portrait video {
+    object-fit: contain;
+  }
 
+  .video-caption {
+    padding: 15px;
+    font-size: 0.9rem;
+    color: var(--text-sub);
+  }
+}
 
+/* ============================================================
+   3. MOBILE LAYOUT (BIS 600px) - FULLSCREEN LOOK
+   ============================================================ */
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 0 !important;
+  }
 
-      <!-- 3D-VISUALISIERUNGEN & ANIMATION -->
-      <section class="video-section">
-        <h2 class="section-title">3D-VISUALISIERUNGEN &amp; ANIMATI<span class="highlight">O</span>N</h2>
-        <p class="subtitle"><strong>Kunde: Sonne Licht Schatten / Agentur RNPD</strong></p>
-        <p class="subtitle">Teilaufgaben: Erstellung von Kamera- und Objektanimationen, Lichtführung und
-          Materialentwicklung für Produktvideos in Blender | Konzept und Planung | 3D-Modellierung & Szenenaufbau |
-          Rigging & Animation Setups | Materialien & Shading | Licht & Szenenaufbau | Kameraarbeit & Inszenierung |
-          Rendering | Compositing & Colorgrading | Schnitt & Post Production | Output</p>
+  header, .section-title, .subtitle {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-        <div class="video-grid">
-          <!-- Videos 5–8 -->
-          <article class="video-card video-card-wide">
-            <div class="video-media">
-              <video autoplay muted loop playsinline poster="poster-05.jpg">
-                <source src="videos/SONNE_Pergolamarkise.mp4" type="video/mp4">
-              </video>
-            </div>
-            <h3 class="video-caption">3D-Visualisierung Pergolamarkise</h3>
-          </article>
+  .video-grid {
+    display: block !important;
+  }
 
-          <article class="video-card video-card-wide">
-            <div class="video-media">
-              <video autoplay muted loop playsinline poster="poster-07.jpg">
-                <source src="videos/SONNE_Klass_Markise_Orange.mp4" type="video/mp4">
-              </video>
-            </div>
-            <h3 class="video-caption">3D-Visualisierung Klassische Markise</h3>
-          </article>
+  .video-card {
+    width: 100vw;
+    height: 100vh; /* Jedes Video eine "Seite" */
+    display: flex;
+    flex-direction: column;
+    background: #000;
+    margin-bottom: 0;
+    border: none;
+    border-bottom: 1px solid #333;
+  }
 
-          <article class="video-card video-card-wide">
-            <div class="video-media">
-              <video autoplay muted loop playsinline poster="poster-08.jpg">
-                <source src="videos/SONL_Sonnenschirm_GRAU_PRO.mp4" type="video/mp4">
-              </video>
-            </div>
-            <h3 class="video-caption">3D-Visualisierung Sonnenschirm</h3>
-          </article>
-        </div>
-      </section>
+  .video-media {
+    flex: 1;
+    width: 100%;
+    position: relative;
+  }
 
-      <!-- VIDEOPRODUKTION & EDITING -->
-      <section class="video-section">
-        <h2 class="section-title">VIDE<span class="highlight">O</span>PRODUKTION &amp; EDITING</h2>
-        <p class="subtitle"><strong>Vorstellung AF Ranch | Coproduziert mit CK-Photography</strong>
-        <p class="subtitle">Konzept & Vorbereitung | Storyboard | Drehplan | Mobiles Kamera- & Soundsetup | Dreh |
-          Sichtung & Rohschnitt | Sounddesign & Musik | Compositing & Post Production | Output & Veröffentlichung</p>
-        <div class="video-grid">
-          <!-- Video 9: YouTube, graues Rechteck vollbreit -->
-          <article class="video-card video-card-wide">
-            <div class="video-media">
-              <!-- YouTube-ID hier eintragen -->
+  .video-media video, .video-media iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Zeigt die komplette Grafik/Flasche */
+  }
 
+  .video-caption {
+    padding: 20px;
+    background: var(--bg);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
 
-              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/R7tQ0Qao_tI"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-              </iframe>
-              <h3 class="video-caption">Wanderreiten in Kärnten</h3>
-            </div>
-        </div>
-        </article>
-      </section>
+/* Footer */
+footer {
+  padding: 60px 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  border-top: 1px solid #333;
+}
 
-      <section class="video-section">
-        <p class="subtitle"><strong>Kunde: Steirischer Zentralraum | Kampagne Jugendlandkarte / Agentur RNPD</strong>
-        </p>
-        <p class="subtitle"> & Vorbereitung | Import & Organisation | Schnitt & Rhythmus | Captions & Textdesign |
-          Sounddesign & Musik | Export & Formatierung | Review & Feedback</p>
-        <div class="video-grid">
-          <article class="video-card">
-            <div class="video-media portrait">
-              <video controls poster="poster-10.jpg">
-                <source src="videos/RMSZ_Laura.mp4" type="video/mp4">
-              </video>
-            </div>
-            <h3 class="video-caption">Social Media Kampagne 01</h3>
-          </article>
-
-          <article class="video-card">
-            <div class="video-media portrait">
-              <video controls poster="poster-11.jpg">
-                <source src="videos/RMSZ_Video-Focus Familie.mp4" type="video/mp4">
-              </video>
-            </div>
-            <h3 class="video-caption">Social Media Kampagne 02</h3>
-          </article>
-
-          <article class="video-card">
-            <div class="video-media portrait">
-              <video controls poster="poster-12.jpg">
-                <source src="videos/RMSZ_Video- Reason Why.mp4" type="video/mp4">
-              </video>
-            </div>
-            <h3 class="video-caption">Social Media Kampagne 03</h3>
-          </article>
-        </div>
-
-      </section>
-    </main>
-
-    <footer>
-      &copy; Margarethe Auer 2025 |
-      <a href="mailto:mecki.auer@gmail.com">mecki.auer@gmail.com</a>
-    </footer>
-    <script>
-      document.querySelectorAll("video").forEach(v => {
-        const observer = new IntersectionObserver(([e]) => {
-          if (e.isIntersecting) v.play();
-          else v.pause();
-        });
-        observer.observe(v);
-      });
-    </script>
-</body>
-
-</html>
+footer a { color: var(--accent); }
