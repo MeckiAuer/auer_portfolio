@@ -1,77 +1,223 @@
-/* ============================================================
-   FINALER HOTFIX FÜR MOBILE BEWERBUNGS-ANSICHT
-   ============================================================ */
+<!DOCTYPE html>
+<html lang="de">
 
-@media (max-width: 600px) {
-  /* 1. Alles auf Null setzen */
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    height: auto !important; /* Verhindert Snap-Konflikte */
-  }
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio | Mecki Auer</title>
 
-  .wrapper {
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100vw !important;
-  }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Montserrat:wght@500;600;700&display=swap"
+    rel="stylesheet">
 
-  /* 2. Grid & Spezial-Reihen auflösen */
-  .video-grid, 
-  .video-row-equal {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-  }
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-  /* 3. Karte auf volle Viewport-Größe zwingen */
-  .video-card {
-    width: 100vw !important;
-    height: 100vh !important; /* Füllt das Handy-Display */
-    min-height: 100vh !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
-    display: flex !important;
-    flex-direction: column !important;
-    background: #000 !important;
-    overflow: hidden;
-  }
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="branding">
+        P<span class="highlight">O</span>RTFOLIO | MECKI AUER
+      </div>
 
-  /* 4. Video-Container */
-  .video-media {
-    flex: 1 !important; /* Nutzt den Platz über der Caption */
-    width: 100% !important;
-    height: 100% !important;
-    position: relative !important;
-    aspect-ratio: auto !important; /* Überschreibt 16:9 Fixierung */
-  }
+      <div>
+        <p class="intro-main">
+          Multimedia Design | 3D Modeling &amp; Animation | Motion Design
+        </p>
+        <p class="subtitle" style="max-width:100%; width:90%;">
+          Ich konzipiere und produziere klare, wirkungsvolle Visuals |
+          von 3D-Renderings und Animation bis zu Web &amp; Motion.
+        </p>
+        <p class="subtitle">
+          Hier finden sich ausgewählte Projekte.
+        </p>
+      </div>
+    </header>
 
-  .video-media video, 
-  .video-media iframe, 
-  .video-media img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: contain !important; /* Zeigt das komplette Motiv ohne Beschnitt */
-    position: absolute !important;
-    top: 0;
-    left: 0;
-  }
+    <main>
+      <!-- 2D-ANIMATION -->
+      <section class="video-section">
+        <h2 class="section-title">2D-ANIMATI<span class="highlight">O</span>N</h2>
+        <p class="subtitle"><strong>Kunden: Kürbiskernöl g.g.A. & Cargo Terminal Graz Website / Agentur RNPD</strong>
+        </p>
+        <p class="subtitle">Teilaufgaben: Konzeption und Umsetzung animierter Icons und Logos in After Effects | Design
+          & Vorbereitung | Timing & Bewegungsplanung | Animation Keyframe-Animation | Export als Lottie File für Web
+        </p>
 
-  /* 5. Caption kompakt halten */
-  .video-caption {
-    width: 100% !important;
-    background: #120606 !important; /* Deine --bg Farbe */
-    padding: 15px !important;
-    margin: 0 !important;
-    font-size: 0.9rem !important;
-    text-align: center;
-    color: #ffffff !important;
-  }
+        <div class="video-grid">
+          <!-- Videos 1–4 -->
+          <article class="video-card">
+            <div class="video-media portrait">
+              <video poster="poster-01.jpg" autoplay muted loop playsinline>
+                <source src="videos/KOEL_Flasche_2.mp4" type="video/mp4">
+                Dein Browser unterstützt HTML5-Video nicht.
+              </video>
+            </div>
+            <h3 class="video-caption">2D-Animation Kernöl-Flasche</h3>
+          </article>
 
-  /* Header & Titel für den Flow anpassen */
-  header, .section-title {
-    padding: 40px 20px 20px !important;
-  }
-}
+          <article class="video-card">
+            <div class="video-media portrait">
+              <video autoplay muted loop playsinline poster="poster-02.jpg">
+                <source src="videos/KOEL_3er.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="video-caption">2D-Animation Icons</h3>
+          </article>
+
+          <article class="video-card">
+            <div class="video-media portrait">
+              <video autoplay muted loop playsinline poster="poster-03.jpg">
+                <source src="videos/KOEL_Gebiete.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="video-caption">2D-Animation Anbaugebiete</h3>
+          </article>
+      </section>
+
+
+      <section class="video-section">
+        <div class="video-grid video-row-equal">
+
+          <article class="video-card">
+            <div class="video-media portrait">
+              <video autoplay muted loop playsinline src="videos/CARGO_Logo.mp4"></video>
+            </div>
+            <h3 class="video-caption">2D-Animation Logoanimation</h3>
+          </article>
+
+
+
+          <article class="video-card">
+            <div class="video-media portrait">
+              <video autoplay muted loop playsinline src="videos/CARGO_Weltkarte.mp4"></video>
+            </div>
+            <h3 class="video-caption">2D-Animation Weltkarte Animation</h3>
+          </article>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 3D-VISUALISIERUNGEN & ANIMATION -->
+      <section class="video-section">
+        <h2 class="section-title">3D-VISUALISIERUNGEN &amp; ANIMATI<span class="highlight">O</span>N</h2>
+        <p class="subtitle"><strong>Kunde: Sonne Licht Schatten / Agentur RNPD</strong></p>
+        <p class="subtitle">Teilaufgaben: Erstellung von Kamera- und Objektanimationen, Lichtführung und
+          Materialentwicklung für Produktvideos in Blender | Konzept und Planung | 3D-Modellierung & Szenenaufbau |
+          Rigging & Animation Setups | Materialien & Shading | Licht & Szenenaufbau | Kameraarbeit & Inszenierung |
+          Rendering | Compositing & Colorgrading | Schnitt & Post Production | Output</p>
+
+        <div class="video-grid">
+          <!-- Videos 5–8 -->
+          <article class="video-card video-card-wide">
+            <div class="video-media">
+              <video autoplay muted loop playsinline poster="poster-05.jpg">
+                <source src="videos/SONNE_Pergolamarkise.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="video-caption">3D-Visualisierung Pergolamarkise</h3>
+          </article>
+
+          <article class="video-card video-card-wide">
+            <div class="video-media">
+              <video autoplay muted loop playsinline poster="poster-07.jpg">
+                <source src="videos/SONNE_Klass_Markise_Orange.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="video-caption">3D-Visualisierung Klassische Markise</h3>
+          </article>
+
+          <article class="video-card video-card-wide">
+            <div class="video-media">
+              <video autoplay muted loop playsinline poster="poster-08.jpg">
+                <source src="videos/SONL_Sonnenschirm_GRAU_PRO.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="video-caption">3D-Visualisierung Sonnenschirm</h3>
+          </article>
+        </div>
+      </section>
+
+      <!-- VIDEOPRODUKTION & EDITING -->
+      <section class="video-section">
+        <h2 class="section-title">VIDE<span class="highlight">O</span>PRODUKTION &amp; EDITING</h2>
+        <p class="subtitle"><strong>Vorstellung AF Ranch | Coproduziert mit CK-Photography</strong>
+        <p class="subtitle">Konzept & Vorbereitung | Storyboard | Drehplan | Mobiles Kamera- & Soundsetup | Dreh |
+          Sichtung & Rohschnitt | Sounddesign & Musik | Compositing & Post Production | Output & Veröffentlichung</p>
+        <div class="video-grid">
+          <!-- Video 9: YouTube, graues Rechteck vollbreit -->
+          <article class="video-card video-card-wide">
+            <div class="video-media">
+              <!-- YouTube-ID hier eintragen -->
+
+
+              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/R7tQ0Qao_tI"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+              <h3 class="video-caption">Wanderreiten in Kärnten</h3>
+            </div>
+        </div>
+        </article>
+      </section>
+
+      <section class="video-section">
+        <p class="subtitle"><strong>Kunde: Steirischer Zentralraum | Kampagne Jugendlandkarte / Agentur RNPD</strong>
+        </p>
+        <p class="subtitle"> & Vorbereitung | Import & Organisation | Schnitt & Rhythmus | Captions & Textdesign |
+          Sounddesign & Musik | Export & Formatierung | Review & Feedback</p>
+        <div class="video-grid">
+          <article class="video-card">
+            <div class="video-media portrait">
+              <video controls poster="poster-10.jpg">
+                <source src="videos/RMSZ_Laura.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="video-caption">Social Media Kampagne 01</h3>
+          </article>
+
+          <article class="video-card">
+            <div class="video-media portrait">
+              <video controls poster="poster-11.jpg">
+                <source src="videos/RMSZ_Video-Focus Familie.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="video-caption">Social Media Kampagne 02</h3>
+          </article>
+
+          <article class="video-card">
+            <div class="video-media portrait">
+              <video controls poster="poster-12.jpg">
+                <source src="videos/RMSZ_Video- Reason Why.mp4" type="video/mp4">
+              </video>
+            </div>
+            <h3 class="video-caption">Social Media Kampagne 03</h3>
+          </article>
+        </div>
+
+      </section>
+    </main>
+
+    <footer>
+      &copy; Margarethe Auer 2025 |
+      <a href="mailto:mecki.auer@gmail.com">mecki.auer@gmail.com</a>
+    </footer>
+    <script>
+      document.querySelectorAll("video").forEach(v => {
+        const observer = new IntersectionObserver(([e]) => {
+          if (e.isIntersecting) v.play();
+          else v.pause();
+        });
+        observer.observe(v);
+      });
+    </script>
+</body>
+
+</html>
