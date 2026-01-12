@@ -1,5 +1,5 @@
 /* ============================================================
-   1. FARBEN & BASICS (DEIN ORIGINAL-SCHEMA)
+   1. FARBEN & BASICS
    ============================================================ */
 :root {
   --bg: #120606;
@@ -18,7 +18,7 @@ body {
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
-  font-size: 1.55rem; /* Deine Desktop-Basisgröße */
+  font-size: 1.55rem;
   line-height: 1.55;
 }
 
@@ -34,7 +34,7 @@ a:hover { color: var(--hover); }
 .highlight { color: var(--accent); }
 
 /* ============================================================
-   2. DEINE EXTRA-GROSSE TYPO-SKALA (DESKTOP)
+   2. TYPOGRAFIE (DEIN ORIGINAL-LOOK)
    ============================================================ */
 h1 { font-size: 3.8rem; line-height: 1.15; font-family: 'Montserrat', sans-serif; }
 h2, .section-title { 
@@ -53,45 +53,57 @@ h2, .section-title {
 }
 .intro-main { font-size: 2.1rem; font-weight: 500; margin-bottom: 8px; }
 .subtitle { font-size: 1.55rem; color: var(--text-sub); line-height: 1.55; }
-.video-caption { font-size: 1.55rem; color: var(--text-sub); font-family: 'Montserrat', sans-serif; margin-top: 8px; }
+.video-caption { font-size: 1.55rem; color: var(--text-sub); font-family: 'Montserrat', sans-serif; margin-top: 12px; }
 
 /* ============================================================
-   3. LAYOUT LOGIK (DESKTOP GRID)
+   3. DESKTOP LAYOUT (STABILE GRID-LOGIK)
    ============================================================ */
 @media (min-width: 601px) {
   .video-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 30px;
     margin-top: 50px;
+    align-items: start;
   }
   .video-card-wide { grid-column: 1 / -1; }
   .video-card {
     border: 1px solid #333;
     background: #180b0b;
-    padding: 10px 10px 12px;
-    transition: all 0.15s ease;
+    padding: 15px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
   }
-  .video-card:hover { border-color: var(--hover); background-color: #211010; }
+  .video-card:hover { border-color: var(--hover); background-color: #211010; transform: translateY(-4px); }
+  
   .video-media { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
-  .video-media.portrait { aspect-ratio: 9 / 16; }
+  
+  /* HOCHFORMAT-OPTIMIERUNG DESKTOP */
+  .video-media.portrait { 
+    aspect-ratio: 9 / 16; 
+    max-height: 70vh; /* Verhindert, dass Porträt-Videos am Desktop zu hoch werden */
+  }
+  
   .video-media video, .video-media iframe { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  
+  /* Falls in .portrait alles sichtbar sein soll (kein Beschnitt) */
+  .video-media.portrait video { object-fit: contain; }
 
   /* Spezialbereich Cargo */
-  .video-row-equal { display: flex !important; }
-  .video-row-equal .video-media { height: 500px; }
-  .video-row-equal video { object-fit: contain; }
+  .video-row-equal { display: flex !important; gap: 24px; }
+  .video-row-equal .video-card { flex: 1; }
+  .video-row-equal .video-media { height: 600px; aspect-ratio: auto; }
 }
 
 /* ============================================================
-   4. MOBILE LOGIK (FULLSCREEN-FIX)
+   4. MOBILE LAYOUT (FULLSCREEN HOCHFORMAT)
    ============================================================ */
 @media (max-width: 600px) {
   body { font-size: 1.1rem; }
   .wrapper { padding: 0 !important; }
   header, .section-title, .subtitle { padding-left: 20px; padding-right: 20px; }
 
-  /* Mobile Typo-Anpassung */
   .branding, h1 { font-size: 1.8rem !important; }
   h2, .section-title { font-size: 1.6rem !important; margin-top: 40px; }
   .intro-main { font-size: 1.3rem !important; }
@@ -108,8 +120,26 @@ h2, .section-title {
     flex-direction: column;
     margin-bottom: 0;
   }
+  
   .video-media { flex: 1; width: 100%; position: relative; aspect-ratio: auto !important; }
-  .video-media video, .video-media iframe { width: 100%; height: 100%; object-fit: contain !important; position: absolute; inset: 0; }
+  
+  .video-media video, .video-media iframe { 
+    width: 100%; 
+    height: 100%; 
+    /* 'cover' macht es vollflächig (Vollbild), 
+       'contain' zeigt die ganze Grafik mit Balken. 
+       Für echte Fullscreen-Experience nutzen wir 'cover' */
+    object-fit: cover !important; 
+    position: absolute; 
+    inset: 0; 
+  }
+
+  /* Bei 2D-Icons und Flaschen (Portrait) ist 'contain' oft besser, 
+     damit nichts abgeschnitten wird. Wir wählen einen Mittelweg: */
+  .video-media.portrait video {
+    object-fit: contain !important;
+  }
+
   .video-caption { padding: 20px; background: var(--bg); text-align: center; }
 }
 
