@@ -1,5 +1,5 @@
 /* ============================================================
-   1. BASIS-STLYES (GILT FÜR ALLES)
+   1. FARBEN & BASICS (DEIN ORIGINAL-SCHEMA)
    ============================================================ */
 :root {
   --bg: #120606;
@@ -9,181 +9,108 @@
   --text-sub: #d0d0d0;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-  background: var(--bg);
-}
+html { scroll-behavior: smooth; background: var(--bg); }
 
 body {
   background: var(--bg);
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
-  line-height: 1.5;
-  font-size: 16px;
-  overflow-x: hidden;
+  min-height: 100vh;
+  font-size: 1.55rem; /* Deine Desktop-Basisgröße */
+  line-height: 1.55;
 }
 
 .wrapper {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: 70px 40px 40px;
 }
 
-/* Typografie */
-h2, .section-title, .branding {
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.branding {
-  font-size: 1.8rem;
-  letter-spacing: 0.06em;
-  margin-bottom: 20px;
-}
-
+/* Links & Highlights */
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--hover); }
 .highlight { color: var(--accent); }
 
-.intro-main {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 10px;
+/* ============================================================
+   2. DEINE EXTRA-GROSSE TYPO-SKALA (DESKTOP)
+   ============================================================ */
+h1 { font-size: 3.8rem; line-height: 1.15; font-family: 'Montserrat', sans-serif; }
+h2, .section-title { 
+  font-size: 3.2rem; 
+  line-height: 1.2; 
+  text-transform: uppercase; 
+  font-family: 'Montserrat', sans-serif; 
+  margin-bottom: 18px;
 }
-
-.subtitle {
-  font-size: 1rem;
-  color: var(--text-sub);
-  margin-bottom: 15px;
-  max-width: 900px;
+.branding { 
+  font-size: 3.2rem; 
+  font-weight: 600; 
+  letter-spacing: 0.06em; 
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 24px;
 }
-
-.section-title {
-  font-size: 1.6rem;
-  margin: 60px 0 25px;
-  border-left: 4px solid var(--accent);
-  padding-left: 15px;
-}
+.intro-main { font-size: 2.1rem; font-weight: 500; margin-bottom: 8px; }
+.subtitle { font-size: 1.55rem; color: var(--text-sub); line-height: 1.55; }
+.video-caption { font-size: 1.55rem; color: var(--text-sub); font-family: 'Montserrat', sans-serif; margin-top: 8px; }
 
 /* ============================================================
-   2. DESKTOP LAYOUT (AB 601px)
+   3. LAYOUT LOGIK (DESKTOP GRID)
    ============================================================ */
 @media (min-width: 601px) {
   .video-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-bottom: 50px;
+    gap: 24px;
+    margin-top: 50px;
   }
-
-  .video-card-wide {
-    grid-column: 1 / -1;
-  }
-
+  .video-card-wide { grid-column: 1 / -1; }
   .video-card {
-    background: #180b0b;
     border: 1px solid #333;
-    transition: all 0.3s ease;
+    background: #180b0b;
+    padding: 10px 10px 12px;
+    transition: all 0.15s ease;
   }
+  .video-card:hover { border-color: var(--hover); background-color: #211010; }
+  .video-media { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
+  .video-media.portrait { aspect-ratio: 9 / 16; }
+  .video-media video, .video-media iframe { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
 
-  .video-card:hover {
-    border-color: var(--hover);
-    transform: translateY(-5px);
-  }
-
-  .video-media {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-  }
-
-  .video-media.portrait {
-    aspect-ratio: 9 / 16;
-    max-height: 600px; /* Verhindert zu riesige Porträt-Videos am Desktop */
-    margin: 0 auto;
-  }
-
-  .video-media video, .video-media iframe {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .video-media.portrait video {
-    object-fit: contain;
-  }
-
-  .video-caption {
-    padding: 15px;
-    font-size: 0.9rem;
-    color: var(--text-sub);
-  }
+  /* Spezialbereich Cargo */
+  .video-row-equal { display: flex !important; }
+  .video-row-equal .video-media { height: 500px; }
+  .video-row-equal video { object-fit: contain; }
 }
 
 /* ============================================================
-   3. MOBILE LAYOUT (BIS 600px) - FULLSCREEN LOOK
+   4. MOBILE LOGIK (FULLSCREEN-FIX)
    ============================================================ */
 @media (max-width: 600px) {
-  .wrapper {
-    padding: 0 !important;
-  }
+  body { font-size: 1.1rem; }
+  .wrapper { padding: 0 !important; }
+  header, .section-title, .subtitle { padding-left: 20px; padding-right: 20px; }
 
-  header, .section-title, .subtitle {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  /* Mobile Typo-Anpassung */
+  .branding, h1 { font-size: 1.8rem !important; }
+  h2, .section-title { font-size: 1.6rem !important; margin-top: 40px; }
+  .intro-main { font-size: 1.3rem !important; }
+  .subtitle, .video-caption { font-size: 1rem !important; }
 
-  .video-grid {
-    display: block !important;
-  }
+  .video-grid, .video-row-equal { display: block !important; }
 
   .video-card {
     width: 100vw;
-    height: 100vh; /* Jedes Video eine "Seite" */
+    height: 100vh;
+    border: none;
+    background: #000;
     display: flex;
     flex-direction: column;
-    background: #000;
     margin-bottom: 0;
-    border: none;
-    border-bottom: 1px solid #333;
   }
-
-  .video-media {
-    flex: 1;
-    width: 100%;
-    position: relative;
-  }
-
-  .video-media video, .video-media iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Zeigt die komplette Grafik/Flasche */
-  }
-
-  .video-caption {
-    padding: 20px;
-    background: var(--bg);
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 500;
-  }
+  .video-media { flex: 1; width: 100%; position: relative; aspect-ratio: auto !important; }
+  .video-media video, .video-media iframe { width: 100%; height: 100%; object-fit: contain !important; position: absolute; inset: 0; }
+  .video-caption { padding: 20px; background: var(--bg); text-align: center; }
 }
 
-/* Footer */
-footer {
-  padding: 60px 20px;
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-sub);
-  border-top: 1px solid #333;
-}
-
-footer a { color: var(--accent); }
+footer { padding: 60px 20px; font-size: 12px; color: var(--text-sub); text-align: center; }
